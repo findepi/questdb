@@ -121,6 +121,10 @@ public abstract class FileWatcher implements QuietCloseable {
         @Override
         public void onFileEvent() {
             synchronized (mutex) {
+                //todo: remove me!
+                System.out.println("Received file event, waiting for a debounce period to elapse...");
+                //todo: remove me!
+
                 notifyAt = System.nanoTime() + debouncePeriodNanos;
                 mutex.notifyAll();
             }
